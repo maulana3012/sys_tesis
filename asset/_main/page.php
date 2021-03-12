@@ -6,17 +6,20 @@ switch ($page) {
 	case 'Dasboard':
 		include "main.php";
 		break;
-	case 'Registrasi':
-		include "data_register.php";
+	case 'RUN-API':
+		include "00.CREATED.php";
 		break;
-	case 'Input-Registrasi':
-		include "registrasi.php";
+	case 'DATA-CHECKED':
+		include "01.DATA-CREATED.php";
 		break;
-	case 'Edit-Registrasi':
-		include "edit_register.php";
+	case 'DATA-PARSING':
+		include "02.DATA-PARSED.php";
 		break;
-	case 'Update-Status':
-		include "update_status.php";
+	case 'DATA-PURL':
+		include "03.DATA-PURL.php";
+		break;
+	case 'EXPIRED':
+		include "04.Expired.php";
 		break;
 	case 'Delete-Registrasi':
 		include "delete_register.php";

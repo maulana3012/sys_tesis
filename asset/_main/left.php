@@ -31,23 +31,23 @@
                     if ($Manager == 1 || $Admin == 1 || $Developer == 1 || $Dadmin == 1 || $Read == 1 || $Project == 1) {
                         echo "
                         <a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseTwo' aria-expanded='true' aria-controls='collapseTwo'>
-                            <i class='fas fa-fw fa-folder'></i><span>Employee Data</span></a>";
+                            <i class='fas fa-fw fa-folder'></i><span>Zurich Data</span></a>";
                     }else{
                         $error[] = "premision anda salah..!";
                     }
                 ?>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Employee Data:</h6>
+                        <h6 class="collapse-header">Zurich Data:</h6>
                         <?php
                             if ($Manager == 1 || $Developer == 1) {
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Data-Register-Employe'>Employe Data</a>";
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Register-Employe'>Register Employe Data</a>";
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Register-Employe-Delete'>Delete Employe Data</a>";
+                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=DATA-CHECKED'>Data Check</a>";
+                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=DATA-PARSING'>Data Ganeret</a>";
+                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=DATA-PURL'>Data Purl</a>";
                             }elseif ($Admin == 1) {
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Register-Employe'>Register Employe Data</a>";
+                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=DATA-PURL'>Data Purl</a>";
                             }elseif ($Dadmin == 1 || $Read == 1 || $Project == 1) {
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Data-Register-Employe'>Employe Data</a>";
+                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=DATA-PURL'>Data Purl</a>";
                             }else{
                                 $error[] = "premision anda salah..!";
                             }
@@ -59,22 +59,17 @@
             <li class="nav-item">
                 <?php
                     if ($Manager == 1 || $Admin == 1 || $Developer == 1 || $Dadmin == 1 || $Report == 1 || $Read == 1) {
-                        echo "<a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseUtilities' aria-expanded='true' aria-controls='collapseUtilities'><i class='fas fa-fw fa-wrench'></i><span>Report Attendance</span></a>";
+                        echo "<a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseUtilities' aria-expanded='true' aria-controls='collapseUtilities'><i class='fas fa-fw fa-wrench'></i><span>Excute Data</span></a>";
                     }
                 ?>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Report Attendance:</h6>
+                        <h6 class="collapse-header">Excute Data:</h6>
                         <?php
                             if ($Manager == 1 || $Developer == 1) {
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Data-Attendance'>Data Attendace</a>";
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Data-Leave'>Data Leave</a>";
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Report-Attendance'>Report Attendace</a>";
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Report-Leave'>Report Leave</a>";
-                            }elseif ($Admin == 1 || $Dadmin == 1 || $Report == 1 || $Read == 1) {
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Report-Attendance'>Report Attendace</a>";
-                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=Report-Leave'>Report Leave</a>";
+                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=RUN-API'>Run API</a>";
+                                echo "<a class='collapse-item fMenu' href='dasboard.php?page=EXPIRED'>Created Expired Link</a>";
                             }
                         ?>
                     </div>
@@ -94,26 +89,18 @@
             <li class="nav-item">
                 <?php
                     if ($Manager == 1 || $Admin == 1 || $Developer == 1 || $Dadmin == 1 || $Report == 1 || $Read == 1) {
-                        echo "<a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapsePages' aria-expanded='true' aria-controls='collapsePages'><i class='fas fa-fw fa-folder'></i><span>User Management</span></a>";
+                        echo "<a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapsePages' aria-expanded='true' aria-controls='collapsePages'><i class='fas fa-fw fa-wrench'></i><span>Configure API</span></a>";
                     }
                 ?>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">User Management:</h6>
+                        <h6 class="collapse-header">Configure API</h6>
                         <?php
                             if ($Manager == 1 || $Developer == 1 || $Admin == 1) {
-                                echo"<a class='collapse-item fMenu' href='dasboard.php?page=Registrasi'>User Management Data</a>";
-                                echo"<a class='collapse-item fMenu' href='dasboard.php?page=Input-Registrasi'>Register User Management</a>";
-                                echo"<a class='collapse-item fMenu' href='dasboard.php?page=Delete-Registrasi'>Delete User Management</a>";
-                            }elseif ($Dadmin == 1 || $Report == 1 || $Read == 1) {
-                                echo"<a class='collapse-item fMenu' href='dasboard.php?page=Registrasi'>User Management Data</a>";
-                            }
-                        ?>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Setting Absensi:</h6>
-                        <?php
-                            if ($Manager == 1 || $Developer == 1) {
-                                echo"<a class='collapse-item fMenu' href='dasboard.php?page=Setting-Page'>Setting Absensi</a>";
+                                echo"<a class='collapse-item fMenu' href=''>Config SFTP</a>";
+                                echo"<a class='collapse-item fMenu' href=''>Delete Data Created</a>";
+                                echo"<a class='collapse-item fMenu' href=''>Delete Data Genarate</a>";
+                                echo"<a class='collapse-item fMenu' href=''>Setting Expired Link</a>";
                             }
                         ?>
                     </div>

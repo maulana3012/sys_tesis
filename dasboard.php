@@ -108,6 +108,12 @@ if ($userRow['STATUS'] == 1) {
           margin-bottom: 0;
         }
 </style>
+<style>
+    .imgGallery img {
+      padding: 8px;
+      max-width: 90px;
+    }    
+  </style>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -204,14 +210,14 @@ if ($userRow['STATUS'] == 1) {
     $(".preloader").fadeOut();
     })
 </script>
-<script>
+<!-- <script>
         function readFile(input) {
           if (input.files && input.files[0]) {
             var reader = new FileReader();
          
             reader.onload = function(e) {
               var htmlPreview =
-                '<img width="600" src="' + e.target.result + '" />' +
+                '<img width="200" src="' + e.target.result + '" />' +
                 '<p>' + input.files[0].name + '</p>';
               var wrapperZone = $(input).parent();
               var previewZone = $(input).parent().parent().find('.preview-zone');
@@ -256,5 +262,62 @@ if ($userRow['STATUS'] == 1) {
           previewZone.addClass('hidden');
           reset(dropzone);
         });
-    </script>
+    </script> -->
+<script>
+    $(function() {
+    // Multiple images preview with JavaScript
+    var multiImgPreview = function(input, imgPreviewPlaceholder) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+      $('#chooseFile').on('change', function() {
+        multiImgPreview(this, 'div.imgGallery');
+      });
+
+      function reset(e) {
+          e.wrap('<form>').closest('form').get(0).reset();
+          e.unwrap();
+        }
+         
+        $(".dropzone").change(function() {
+          readFile(this);
+        });
+         
+        $('.dropzone-wrapper').on('dragover', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          $(this).addClass('dragover');
+        });
+         
+        $('.dropzone-wrapper').on('dragleave', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          $(this).removeClass('dragover');
+        });
+         
+        $('.remove-preview').on('click', function() {
+          var boxZone = $(this).parents('.preview-zone').find('.box-body');
+          var previewZone = $(this).parents('.preview-zone');
+          var dropzone = $(this).parents('.form-group').find('.dropzone');
+          boxZone.empty();
+          previewZone.addClass('hidden');
+          reset(dropzone);
+        });
+
+    });    
+  </script>
 </html>

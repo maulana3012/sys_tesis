@@ -301,190 +301,208 @@ class USER
         return $data;
     }
 
-    public function created_devisi($fdevisi,$fkode)
+    public function created($InsertCreated)
     {
-
         try{
-            $status = 2;
-            $stmt = $this->db->prepare("INSERT INTO tb_devisi (DEVISI,KODE,STATUS) VALUES (:fdevisi, :fkode,:fstatus)");
-            $stmt->bindparam(":fdevisi", $fdevisi);
-            $stmt->bindparam(":fkode", $fkode);
-            $stmt->bindparam(":fstatus", $status);
-            $stmt->execute();
+            $stmt = $this->db->prepare("INSERT INTO tb_data_check(
+                                        CLIENT_TYPE,
+                                        POLICY_HOLDER_NAME,
+                                        LIFE_ASSURED,
+                                        POLICY_HOLDER_DATE_OF_BIRTH,
+                                        POLICY_HOLDER_DATE_OF_BIRTH_LIFE_ASSURED,
+                                        POLICY_NUMBER,
+                                        CURRENCY_1,
+                                        SUM_ASSURED,
+                                        CURRENCY_2,
+                                        PREMIUM_AMOUNT,
+                                        PAYMENT_FREQUENCY,
+                                        CODE_PAYMENT_METHOD,
+                                        AGENT_NAME,
+                                        POLICY_HOLDER_PHONE_NUMBER,
+                                        EMAIL_POLICY_HOLDER_NAME,
+                                        COMPONENT_DESCRIPTION,
+                                        CYCLE_DATE,
+                                        ISSUED_DATE,
+                                        CREATED_DATE,
+                                        STATUS_FLAG) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute($InsertCreated);
             return $stmt;
         }catch(PDOException $e){
             echo $e->getMessage();
         }
     }
 
-    public function devisi()
+    public function data_project($Project)
     {
+        $stmt = $this->db->prepare("SELECT hostname,username,password,port FROM tb_sftp WHERE id=:Project");
+        $stmt->execute(array(":Project"=>$Project));
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data;
+    }
 
-        $stmt = $this->db->prepare("SELECT * FROM tb_devisi");
+    public function data_check()
+    {
+        $stmt = $this->db->prepare("SELECT CLIENT_TYPE,POLICY_HOLDER_NAME,LIFE_ASSURED,POLICY_HOLDER_DATE_OF_BIRTH,POLICY_HOLDER_DATE_OF_BIRTH_LIFE_ASSURED,POLICY_NUMBER,CURRENCY_1,SUM_ASSURED,CURRENCY_2,PREMIUM_AMOUNT,PAYMENT_FREQUENCY,CODE_PAYMENT_METHOD,AGENT_NAME,POLICY_HOLDER_PHONE_NUMBER,EMAIL_POLICY_HOLDER_NAME,COMPONENT_DESCRIPTION,CYCLE_DATE,ISSUED_DATE,CREATED_DATE,STATUS_FLAG FROM tb_data_check");
         $stmt->execute();
         $data = $stmt->fetchAll();
         return $data;
     }
 
-    public function show_devisi($fdevisi)
+    public function data_check_status($STATUS_FLAG)
+    {
+        $stmt = $this->db->prepare("SELECT CLIENT_TYPE,POLICY_HOLDER_NAME,LIFE_ASSURED,POLICY_HOLDER_DATE_OF_BIRTH,POLICY_HOLDER_DATE_OF_BIRTH_LIFE_ASSURED,POLICY_NUMBER,CURRENCY_1,SUM_ASSURED,CURRENCY_2,PREMIUM_AMOUNT,PAYMENT_FREQUENCY,CODE_PAYMENT_METHOD,AGENT_NAME,POLICY_HOLDER_PHONE_NUMBER,EMAIL_POLICY_HOLDER_NAME,COMPONENT_DESCRIPTION,ISSUED_DATE,CYCLE_DATE,CREATED_DATE,STATUS_FLAG FROM tb_data_check WHERE STATUS_FLAG =:STATUS_FLAG");
+        $stmt->execute(array(":STATUS_FLAG"=>$STATUS_FLAG));
+        $data = $stmt->fetchAll();
+        return $data;
+    }
+
+    public function update_check($dataUpdateCheck)
+    {
+        $stmt = $this->db->prepare("UPDATE tb_data_check SET CHECKED_DATE=?, POLICY_HOLDER_NAME=?, LIFE_ASSURED=?, AGENT_NAME=?, EMAIL_POLICY_HOLDER_NAME=?, STATUS_FLAG='CHECKED' WHERE POLICY_NUMBER=?");
+        $stmt->execute($dataUpdateCheck);
+
+        return true;
+    }
+
+    public function parsed($InputParsed)
     {
         try{
-            $stmt = $this->db->prepare("SELECT DEVISI, max(KODE) as KODEBESAR FROM tb_devisi WHERE DEVISI=:DEVISI");
-            $stmt->execute(array(':DEVISI'=>$fdevisi));
-            $data = $stmt->fetchAll();
-            return $data;
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-    }
-
-    public function select_devisi() {
-        $qsi = "QSI-";
-        $stmt = $this->db->prepare("SELECT max(KODE) AS KODETERAKHIR FROM tb_devisi WHERE KODE LIKE '$qsi%'");
-        $stmt->execute();
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-        $dlast = $data['KODETERAKHIR'];
-        $lastNoUrut = substr($dlast, 4, 4);
-        $nextNoUrut = $lastNoUrut+1;
-        $last = $qsi.sprintf('%04s',$nextNoUrut);
-        return $last;
-    }
-
-    public function insert_register_employee($fnik,$fFristname,$fLastname,$ftmpLahir,$ftgllahir,$fjeniskelamin,$fagama,$falamat,$fnoHp,$femail,$fdevisi,$fjabatan,$ftgljoin,$ftglCrated) {
-        
-        try{
-            $fstatus = 2;
-            $stmt = $this->db->prepare("INSERT INTO tb_karyawan (
-            NIK,
-            FRISTNAME,
-            LASTNAME,
-            TEMPAT_LAHIR,
-            TANGGAL_LAHIR,
-            JENIS_KELAMIN,
-            AGAMA,
-            ALAMAT,
-            NOMOR_HANDPHONE,
-            EMAIL,
-            DEVISI,
-            JABATAN,
-            TANGGAL_BAERGABUNG,
-            STATUS,
-            TANGGAL_CRATED) VALUES (
-            :fnik,
-            :fFristname,
-            :fLastname,
-            :ftmpLahir,
-            :ftgllahir,
-            :fjeniskelamin,
-            :fagama,
-            :falamat,
-            :fnoHp,
-            :femail,
-            :fdevisi,
-            :fjabatan,
-            :ftgljoin,
-            :fstatus,
-            :ftglCrated)"
-        );
-
-            $stmt->bindparam(":fnik", $fnik);
-            $stmt->bindparam(":fFristname", $fFristname);
-            $stmt->bindparam(":fLastname", $fLastname);
-            $stmt->bindparam(":ftmpLahir", $ftmpLahir);
-            $stmt->bindparam(":ftgllahir", $ftgllahir);
-            $stmt->bindparam(":fjeniskelamin", $fjeniskelamin);
-            $stmt->bindparam(":fagama", $fagama);
-            $stmt->bindparam(":falamat", $falamat);
-            $stmt->bindparam(":fnoHp", $fnoHp);
-            $stmt->bindparam(":femail", $femail);
-            $stmt->bindparam(":fdevisi", $fdevisi);
-            $stmt->bindparam(":fjabatan", $fjabatan);
-            $stmt->bindparam(":ftgljoin", $ftgljoin);
-            $stmt->bindparam(":fstatus", $fstatus);
-            $stmt->bindparam(":ftglCrated", $ftglCrated);
-
-            $stmt->execute();
+            $stmt = $this->db->prepare("INSERT INTO tb_data_zurich(
+                                        UID,
+                                        CLIENT_TYPE,
+                                        POLICY_HOLDER_NAME,
+                                        POLICY_HOLDER_NAME_ROW_2,
+                                        LIFE_ASSURED,
+                                        LIFE_ASSURED_ROW_2,
+                                        POLICY_HOLDER_DATE_OF_BIRTH,
+                                        POLICY_HOLDER_DATE_OF_BIRTH_LIFE_ASSURED,
+                                        POLICY_NUMBER,
+                                        CURRENCY_1,
+                                        SUM_ASSURED,
+                                        CURRENCY_2,
+                                        PREMIUM_AMOUNT,
+                                        CODE_FREQUENCY,
+                                        PAYMENT_FREQUENCY,
+                                        CODE_PAYMENT_METHOD,
+                                        PAYMENT_METHOD,
+                                        AGENT_NAME,
+                                        POLICY_HOLDER_PHONE_NUMBER,
+                                        EMAIL_POLICY_HOLDER_NAME,
+                                        COMPONENT_DESCRIPTION,
+                                        CODE_COMPONENT_DESCRIPTION,
+                                        ISSUED_DATE,
+                                        CYCLE_DATE,
+                                        PARSED_AT,
+                                        CREATED_AT,
+                                        EXPIRED_DATE,
+                                        EXPIRED_STATUS,
+                                        STATUS_FLAG
+                                        ) 
+                                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $stmt->execute($InputParsed);
             return $stmt;
         }catch(PDOException $e){
             echo $e->getMessage();
         }
     }
 
-    public function show_karyawan(){
-        $stmt = $this->db->prepare("SELECT * FROM tb_karyawan");
+    public function data_parsed()
+    {
+        $stmt = $this->db->prepare("SELECT UID,CLIENT_TYPE,POLICY_HOLDER_NAME,POLICY_HOLDER_NAME_ROW_2,LIFE_ASSURED,LIFE_ASSURED_ROW_2,POLICY_HOLDER_DATE_OF_BIRTH,POLICY_HOLDER_DATE_OF_BIRTH_LIFE_ASSURED,POLICY_NUMBER,CURRENCY_1,SUM_ASSURED,CURRENCY_2,PREMIUM_AMOUNT,CODE_FREQUENCY,PAYMENT_FREQUENCY,CODE_PAYMENT_METHOD,PAYMENT_METHOD,AGENT_NAME,POLICY_HOLDER_PHONE_NUMBER,EMAIL_POLICY_HOLDER_NAME,COMPONENT_DESCRIPTION,CODE_COMPONENT_DESCRIPTION,LANDING_PAGE,ISSUED_DATE,CYCLE_DATE,PARSED_AT,GENERATED_AT,STATUS_FLAG,CREATED_AT FROM tb_data_zurich");
         $stmt->execute();
         $data = $stmt->fetchAll();
-        return $data;   
+        return $data;
     }
 
-    public function show_karyawan_nik($fid){
-        $stmt = $this->db->prepare("SELECT * FROM tb_karyawan WHERE NIK=:NIK");
-        $stmt->execute(array(":NIK"=>$fid));
-        $data = $stmt->fetch();
-        return $data;   
-    }
-
-    public function show_karyawan_status($fstatus){
-        $stmt = $this->db->prepare("SELECT * FROM tb_karyawan WHERE STATUS=:STATUS");
-        $stmt->execute(array(":STATUS"=>$fstatus));
+    public function data_parsed_status($STATUS_FLAG)
+    {
+        $stmt = $this->db->prepare("SELECT UID,CLIENT_TYPE,POLICY_HOLDER_NAME,POLICY_HOLDER_NAME_ROW_2,LIFE_ASSURED,LIFE_ASSURED_ROW_2,POLICY_HOLDER_DATE_OF_BIRTH,POLICY_HOLDER_DATE_OF_BIRTH_LIFE_ASSURED,POLICY_NUMBER,CURRENCY_1,SUM_ASSURED,CURRENCY_2,PREMIUM_AMOUNT,CODE_FREQUENCY,PAYMENT_FREQUENCY,CODE_PAYMENT_METHOD,PAYMENT_METHOD,AGENT_NAME,POLICY_HOLDER_PHONE_NUMBER,EMAIL_POLICY_HOLDER_NAME,COMPONENT_DESCRIPTION,CODE_COMPONENT_DESCRIPTION,LANDING_PAGE,ISSUED_DATE,CYCLE_DATE,PARSED_AT,GENERATED_AT,STATUS_FLAG,CREATED_AT FROM tb_data_zurich WHERE STATUS_FLAG =:STATUS_FLAG");
+        $stmt->execute(array(":STATUS_FLAG"=>$STATUS_FLAG));
         $data = $stmt->fetchAll();
-        return $data;   
+        return $data;
     }
 
-    public function update_status_karyawan($fid){
-       $fstatus = 1;
-       $stmt = $this->db->prepare("UPDATE tb_karyawan SET STATUS=:STATUS WHERE ID=:ID");
+    public function update_parsed($LANDING_PAGE,$GENERATED_AT,$POLICY_NUMBER)
+    {
+        $stmt = $this->db->prepare("UPDATE tb_data_zurich SET LANDING_PAGE=:LANDING_PAGE, GENERATED_AT=:GENERATED_AT, STATUS_FLAG='CONVERTED' WHERE POLICY_NUMBER=:POLICY_NUMBER");
+        $stmt->execute(array(":LANDING_PAGE"=>$LANDING_PAGE,":GENERATED_AT"=>$GENERATED_AT,":POLICY_NUMBER"=>$POLICY_NUMBER));
 
-       $stmt->bindparam(":STATUS", $fstatus);
-       $stmt->bindparam(":ID", $fid);
-
-       $stmt->execute();
-       $update = $stmt->rowCount();
-       return $update;
-
+        return true;
     }
 
-    public function delete_status_karyawan($fid){
-       $fstatus = 2;
-       $stmt = $this->db->prepare("UPDATE tb_karyawan SET STATUS=:STATUS WHERE ID=:ID");
+    public function update_export($POLICY_NUMBER)
+    {
+        $stmt = $this->db->prepare("UPDATE tb_data_zurich SET STATUS_FLAG='EXPORT' WHERE POLICY_NUMBER=:POLICY_NUMBER");
+        $stmt->execute(array(":POLICY_NUMBER"=>$POLICY_NUMBER));
 
-       $stmt->bindparam(":STATUS", $fstatus);
-       $stmt->bindparam(":ID", $fid);
-
-       $stmt->execute();
-       $update = $stmt->rowCount();
-       return $update;
-
+        return true;
     }
 
-    public function upload_register_employee($fKid,$userRgb,$localFile,$fimage_size){
+    public function purl_status($POLICY_NUMBER)
+    {
+        $stmt = $this->db->prepare("UPDATE tb_data_purl SET STATUS_FLAG='EXPORT' WHERE POLICY_NUMBER=:POLICY_NUMBER");
+        $stmt->execute(array(":POLICY_NUMBER"=>$POLICY_NUMBER));
 
+        return true;
+    }
+
+    public function update_purl($LANDING_PAGE,$GENERATED_AT,$POLICY_NUMBER)
+    {
+        $stmt = $this->db->prepare("UPDATE tb_data_purl SET LANDING_PAGE=:LANDING_PAGE, GENERATED_AT=:GENERATED_AT, STATUS_FLAG='CONVERTED' WHERE POLICY_NUMBER=:POLICY_NUMBER");
+        $stmt->execute(array(":LANDING_PAGE"=>$LANDING_PAGE,":GENERATED_AT"=>$GENERATED_AT,":POLICY_NUMBER"=>$POLICY_NUMBER));
+
+        return true;
+    }
+
+    public function select_purl()
+    {
+        $stmt = $this->db->prepare("SELECT UID,CLIENT_TYPE,POLICY_HOLDER_NAME,POLICY_HOLDER_NAME_ROW_2,LIFE_ASSURED,LIFE_ASSURED_ROW_2,POLICY_HOLDER_DATE_OF_BIRTH,POLICY_HOLDER_DATE_OF_BIRTH_LIFE_ASSURED,POLICY_NUMBER,POLICY_HOLDER_PHONE_NUMBER,EMAIL_POLICY_HOLDER_NAME,LANDING_PAGE,CYCLE_DATE,EXPIRED_DATE FROM tb_data_purl");
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        return $data;
+    }
+
+    public function data_purl($InputParsed)
+    {
         try{
-            $CREATED_DATE = date('Y-m-d H:i:s');
-            $stmt = $this->db->prepare("INSERT INTO tb_image (
-            ID_KARYAWAN,
-            NAME_IMAGE,
-            RGB_IMAGE,
-            SIZE_IMAGE,
-            CREATED_DATE) VALUES (
-            :fKid,
-            :fimage_name,
-            :fpath_rgb,
-            :fimage_size,
-            :fcreated)"
-        );
-            $stmt->bindparam(":fKid", $fKid);
-            $stmt->bindparam(":fimage_name", $userRgb);
-            $stmt->bindparam(":fpath_rgb", $localFile);
-            $stmt->bindparam(":fimage_size", $fimage_size);
-            $stmt->bindparam(":fcreated", $CREATED_DATE);
-
-            $stmt->execute();
+            $stmt = $this->db->prepare("INSERT INTO tb_data_purl(
+                                        UID,
+                                        CLIENT_TYPE,
+                                        POLICY_HOLDER_NAME,
+                                        POLICY_HOLDER_NAME_ROW_2,
+                                        LIFE_ASSURED,
+                                        LIFE_ASSURED_ROW_2,
+                                        POLICY_HOLDER_DATE_OF_BIRTH,
+                                        POLICY_HOLDER_DATE_OF_BIRTH_LIFE_ASSURED,
+                                        POLICY_NUMBER,
+                                        CURRENCY_1,
+                                        SUM_ASSURED,
+                                        CURRENCY_2,
+                                        PREMIUM_AMOUNT,
+                                        CODE_FREQUENCY,
+                                        PAYMENT_FREQUENCY,
+                                        CODE_PAYMENT_METHOD,
+                                        PAYMENT_METHOD,
+                                        AGENT_NAME,
+                                        POLICY_HOLDER_PHONE_NUMBER,
+                                        EMAIL_POLICY_HOLDER_NAME,
+                                        COMPONENT_DESCRIPTION,
+                                        CODE_COMPONENT_DESCRIPTION,
+                                        ISSUED_DATE,
+                                        CYCLE_DATE,
+                                        PARSED_AT,
+                                        CREATED_AT,
+                                        EXPIRED_DATE,
+                                        EXPIRED_STATUS,
+                                        STATUS_FLAG
+                                        ) 
+                                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $stmt->execute($InputParsed);
             return $stmt;
         }catch(PDOException $e){
             echo $e->getMessage();
         }
-
     }
+
 }
 ?>

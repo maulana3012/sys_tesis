@@ -1,0 +1,8 @@
+[OK][20210312 09:15:46]Datafeed-Export-20200101.csv Terdownload
+[OK][20210312 09:17:56]Datafeed-Export-20200101.csv Terdownload
+[OK][20210312 09:19:23]Datafeed-Export-20200101.csv Terdownload
+[OK][20210312 09:26:30]Datafeed-Export-20200101.csv Terdownload
+[OK][20210312 09:54:54]Datafeed-Export-20200101.csv Terdownload
+[OK][20210312 10:10:04]Datafeed-Export-20200101.csv Terdownload
+[OK][20210312 10:31:27]Datafeed-Export-20200101.csv Terdownload
+[OK][20210312 10:32:54]Datafeed-Export-20200101.csv Terdownload

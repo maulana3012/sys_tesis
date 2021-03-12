@@ -12,7 +12,7 @@ if (HOST == 'ONLINE') {
 	DEFINE('HOME_AJAX', '');
 	DEFINE('TB_INMG', 'tb_images');
 }else{
-	DEFINE('DB_NAME', 'db_tesis');
+	DEFINE('DB_NAME', 'db_api');
 	DEFINE('DB_USER', 'root');
 	DEFINE('DB_PASSWORD', '');
 	DEFINE('DB_HOST', 'localhost');
@@ -34,6 +34,14 @@ try {
 require_once "_php-facedetection/FaceDetector.php";
 require_once "class.user.php";
 require_once "library.php";
+
+$link_eov				 = "http://localhost/LDP-ZURICH/?uid=";
+$file_name_log 		 	 = "logs/api-log".date("Ymd").".txt";
+$file_name_log_SFTP 	 = "logs/SFTP/api-log-sftp".date("Ymd").".txt";
+$file_name_log_create    = "logs/create/api-log-create".date("Ymd").".txt";
+$file_name_log_check 	 = "logs/check/api-log-check".date("Ymd").".txt";
+$file_name_log_parsing 	 = "logs/parse/api-log-parse".date("Ymd").".txt";
+$file_name_log_generated = "logs/generate/api-log-generate".date("Ymd").".txt";
 
 $user = new USER ($db_con);
 $detector = new svay\FaceDetector('detection.dat');

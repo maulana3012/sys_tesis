@@ -8,6 +8,8 @@
           <option value="Error" />
           <option value="select.python_mysql_dbconfig" />
           <option value="select._lib" />
+          <option value="face_utils" />
+          <option value="connect.SHAPE_PREDICTOR" />
         </list>
       </option>
     </inspection_tool>

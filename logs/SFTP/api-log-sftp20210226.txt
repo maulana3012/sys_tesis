@@ -1,0 +1,63 @@
+[OK][20210226 11:53:44]SFTP TERKONEKSI
+[OK][20210226 11:53:44]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:02:04]SFTP TERKONEKSI
+[OK][20210226 12:02:04]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:02:04]Datafeed-Export-20200101.csvAda Data
+[OK][20210226 12:03:22]SFTP TERKONEKSI
+[OK][20210226 12:03:22]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:08:37]SFTP TERKONEKSI
+[OK][20210226 12:08:37]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:09:15]SFTP TERKONEKSI
+[OK][20210226 12:09:15]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:09:49]SFTP TERKONEKSI
+[OK][20210226 12:09:49]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:11:25]SFTP TERKONEKSI
+[OK][20210226 12:11:25]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:11:25]Datafeed-Export-20200101.csv
+[OK][20210226 12:11:57]SFTP TERKONEKSI
+[OK][20210226 12:11:57]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:13:49]SFTP TERKONEKSI
+[OK][20210226 12:13:49]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:15:54]SFTP TERKONEKSI
+[OK][20210226 12:15:54]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:16:28]SFTP TERKONEKSI
+[OK][20210226 12:16:28]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:16:54]SFTP TERKONEKSI
+[OK][20210226 12:16:54]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:22:02]SFTP TERKONEKSI
+[OK][20210226 12:22:02]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:25:33]SFTP TERKONEKSI
+[OK][20210226 12:25:33]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:26:12]SFTP TERKONEKSI
+[OK][20210226 12:26:12]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:29:22]SFTP TERKONEKSI
+[OK][20210226 12:29:22]Datafeed-Export-20200101.csv Terdownload
+[ERROR][20210226 12:37:57]Datafeed-Export-20200101.csv Not Insert Data Table Check
+[ERROR][20210226 12:37:57]Datafeed-Export-20200101.csv Not Insert Data Table Check
+[ERROR][20210226 12:39:37]Datafeed-Export-20200101.csv Not Insert Data Table Check
+[ERROR][20210226 12:39:37]Datafeed-Export-20200101.csv Not Insert Data Table Check
+[OK][20210226 12:41:12]SFTP TERKONEKSI
+[OK][20210226 12:41:12]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:41:12]Datafeed-Export-20200101.csv Insert Data Table Check
+[OK][20210226 12:41:12]Datafeed-Export-20200101.csv Insert Data Table Check
+[OK][20210226 12:43:16]SFTP TERKONEKSI
+[OK][20210226 12:43:16]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 12:43:16]Datafeed-Export-20200101.csv Insert Data Table Check
+[OK][20210226 12:43:16]Datafeed-Export-20200101.csv Insert Data Table Check
+[OK][20210226 12:44:42]SFTP TERKONEKSI
+[OK][20210226 12:44:42]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 13:26:55]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 13:28:36]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:36:26]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:37:18]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:39:55]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:43:12]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:43:31]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:44:45]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:48:23]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:50:31]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:56:34]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:58:04]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 15:59:25]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 16:00:22]Datafeed-Export-20200101.csv Terdownload
+[OK][20210226 16:01:09]Datafeed-Export-20200101.csv Terdownload

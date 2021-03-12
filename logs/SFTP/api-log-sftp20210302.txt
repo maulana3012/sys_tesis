@@ -1,0 +1,11 @@
+[ERROR][20210302 13:14:14]Datafeed-Export-20200101.csv Tidak Terdownload
+[ERROR][20210302 13:16:05]Datafeed-Export-20200101.csv Tidak Terdownload
+[ERROR][20210302 13:18:02]Datafeed-Export-20200101.csv Tidak Terdownload
+[OK][20210302 13:25:51]Datafeed-Export-20200101.csv Terdownload
+[OK][20210302 13:39:56]Datafeed-Export-20200101.csv Terdownload
+[OK][20210302 13:43:13]Datafeed-Export-20200101.csv Terdownload
+[OK][20210302 13:46:12]Datafeed-Export-20200101.csv Terdownload
+[OK][20210302 13:47:24]Datafeed-Export-20200101.csv Terdownload
+[OK][20210302 13:57:26]Datafeed-Export-20200101.csv Terdownload
+[OK][20210302 14:00:18]Datafeed-Export-20200101.csv Terdownload
+[OK][20210302 14:14:22]Datafeed-Export-20200101.csv Terdownload
